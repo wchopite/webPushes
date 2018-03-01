@@ -8,7 +8,7 @@ npm install
 ```
 
 
-them start the web server running: 
+then start the web server: 
 
 ```
 lite-server
