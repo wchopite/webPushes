@@ -124,23 +124,23 @@ function subscribe() {
 }
 
 function unsubscribe() {
-  alert("Unsubscribe");
-  // getSubscription().then(function(subscription) {
-  //   console.log("ENDPOINT", subscription.endpoint);
-  //   return subscription.unsubscribe()
-  //     .then(function() {
-  //       return fetch(backendURL + '/atcodes/' + atcode + '/push', {
-  //         method: 'delete',
-  //         headers: {
-  //           'Content-type': 'application/json',
-  //           'Cookie': 'xxxxxxxxxx'
-  //         },
-  //         body: JSON.stringify({
-  //           os: 'Web'
-  //         })
-  //       });
-  //     });
-  // }).then(setSubscribeButton);
+  getSubscription().then(function(subscription) {
+    console.log("ENDPOINT", subscription.endpoint);
+    return subscription.unsubscribe()
+      .then(function() {
+        return fetch(backendURL + '/atcodes/' + atcode + '/push', {
+          method: 'delete',
+          headers: {
+            'Content-type': 'application/json',
+            'Cookie': 'xxxxxxxxxx'
+          },
+          body: JSON.stringify({
+            os: 'Web',
+            regId: "userAuthKeyXXXXXXXXXX"
+          })
+        });
+      });
+  }).then(setSubscribeButton);
 }
 
 function setSubscribeButton() {
